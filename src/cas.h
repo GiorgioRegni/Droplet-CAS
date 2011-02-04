@@ -8,7 +8,8 @@
 #include "rollsum.h"
 
 #define DC_ROLLING_WINDOW       48
-#define DC_MAX_CHUNK_SIZE       8192
+#define DC_MIN_CHUNK_SIZE       512
+#define DC_MAX_CHUNK_SIZE       (ROLLSUM_CHECK_AVG_CHUNK_SIZE*2)
 
 typedef struct dc_stream {
   SHA_CTX sc;

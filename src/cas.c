@@ -20,10 +20,9 @@ void dc_write_add(tdc_stream *s, char c) {
   s->b[s->b_c++] = c;
   s->offset++;
 
-
   if (s->b_c == DC_MAX_CHUNK_SIZE) {
     reached_boundary = 1;
-  } else {
+  } else if (s->b_c > DC_MIN_CHUNK_SIZE) {
     // Update rolling checksum
     rollsumRotate(&s->rsum, s->w[s->w_c], c); 
     s->w[s->w_c++] = c;
@@ -65,6 +64,15 @@ void dc_write_add(tdc_stream *s, char c) {
 char *dc_write_end(tdc_stream *s) {
   unsigned char md[SHA_DIGEST_LENGTH] = {0};
   int i;
+
+  
+  if (s->b_c > 0) {
+    /* Need to add bytes from last block */
+    SHA1_Update(&s->sc, (const void*) &s->b,
+		s->b_c);
+
+    dc_log(DC_LOG_ERROR, "BLOCK %d LEN %d", s->offset, s->b_c);
+  }
 
   SHA1_Final(md, &s->sc);
 
