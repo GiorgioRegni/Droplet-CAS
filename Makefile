@@ -9,8 +9,8 @@ FCGI_LDFLAGS=-L/usr/local/lib -lfcgi
 SRC=$(wildcard src/*.c)
 OBJ=$(SRC:.c=.o)
 
-CFLAGS=$(DPL_CFLAGS) $(FCGI_CFLAGS) -Isrc
-LDFLAGS=$(DPL_LDFLAGS) $(FCGI_LDFLAGS)
+CFLAGS=$(DPL_CFLAGS) $(FCGI_CFLAGS) -Isrc -g
+LDFLAGS=$(DPL_LDFLAGS) $(FCGI_LDFLAGS) -g
 CC = gcc
 
 all: $(BIN)
