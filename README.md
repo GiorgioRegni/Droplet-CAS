@@ -13,8 +13,7 @@ between a file and it's uniquely generated key.
 
 ## INSTALL
 
-Droplet-CAS uses the Droplet library for all interactions with cloud services, Droplet is available @ 
-http://github.com/scality/Droplet .
+Droplet-CAS uses the Droplet library for all interactions with cloud services, Droplet is available @[http://github.com/scality/Droplet].
 
 TBD
 
