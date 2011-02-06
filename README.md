@@ -11,6 +11,14 @@ Content addressable storage means that the system provides key for each file tha
 Files are read back from the system by using this key, not by file name. It's up to the client to store the mapping
 between a file and it's uniquely generated key.
 
+## INSTALL
+
+Droplet-CAS uses the Droplet library for all interactions with cloud services, Droplet is available @ 
+http://github.com/scality/Droplet .
+
+TBD
+
+
 ## API
 
  * WRITE

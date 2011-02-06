@@ -19,7 +19,7 @@ char* dc_add_block(const char *buf, int len) {
 	      len);
   SHA1_Final(md, &sc);
 
-  char *ret = malloc(SHA_DIGEST_LENGTH*2);
+  char *ret = malloc(SHA_DIGEST_LENGTH*2+1);
 
   for(i = 0; i < SHA_DIGEST_LENGTH; i++) 
     sprintf(ret+i*2, "%02X", md[i]);
